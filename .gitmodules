@@ -3,4 +3,4 @@
 	url = https://github.com/TinyTapeout/tt-multiplexer/
 [submodule "tt"]
 	path = tt
-	url = https://github.com/TinyTapeout/tt-support-tools
+	url = https://github.com/htfab/tt-support-tools
