@@ -67,6 +67,22 @@ jobs:
           pdk_version: ${{ env.SKY130_PDK_VERSION }}
           pdk_root: ${{ env.PDK_ROOT }}
 
+      - name: Install KLayout
+        run: |
+          wget https://github.com/htfab/klayout/releases/download/v0.29.10/klayout_0.29.10-1_amd64.deb
+          sudo apt-get install -y ./klayout_0.29.10-1_amd64.deb
+          pip install klayout==0.29.10
+
+      - name: Convert OAS artifacts to GDS
+        working-directory: projects
+        run: |
+          for project in tt_um_*; do
+            if [ -e "$project/$project.oas" ]; then
+              echo "Converting $project/$project.oas"
+              strm2gds "$project/$project.oas" "$project/$project.gds"
+            fi
+          done
+
       # Patch all digital projects to work around the poly density issue
       - name: Patch projects for poly density issue
         working-directory: projects
