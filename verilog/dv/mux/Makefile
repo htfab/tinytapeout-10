@@ -20,7 +20,6 @@ TOPLEVEL_LANG ?= verilog
 COMPILE_ARGS  += -DMPRJ_IO_PADS=44
 COMPILE_ARGS  += -DSIM_$(shell echo $(SIM) | tr a-z A-Z)=1
 COMPILE_ARGS  += -DROM_VMEM_PATH=\"../../../tt/rom/rom.vmem\"
-COMPILE_ARGS  += -DFORMAL
 
 # Additional arguments to support Verilator
 ifeq ($(SIM),verilator)
